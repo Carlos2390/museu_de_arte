@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museu de Arte</title>
+    <link rel="stylesheet" href="estilos/cards.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="bg-danger text-white text-center py-4">
+        <h1>Museu de Arte</h1>
+        <div class="container">
+            <form action="pesquisa.php" method="POST" class="form-inline d-inline">
+                <input type="text" name="pesquisa" class="form-control" placeholder="Título | Artista | Material">
+                <button type="submit" class="btn btn-light">Pesquisar</button>
+            </form>
+            <br>
+            <a href="cadastro_obra.php" class="btn btn-primary my-3">Cadastrar Obra</a>
+            <a href="exposicoes.php" class="btn btn-secondary my-3">Exposições</a>
+        </div>
+    </header>
