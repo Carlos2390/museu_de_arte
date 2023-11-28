@@ -1,36 +1,31 @@
 <?php
-// delete_exposicao.php
-
 $servername = "localhost";
 $database = "museu";
 $username = "root";
 $password = "";
 
-// Verifica se o ID da exposição foi enviado via método POST
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["exposicao_id"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $exposicao_id = $_POST["exposicao_id"];
 
-    // Conexão com o banco de dados
     $conn = mysqli_connect($servername, $username, $password, $database);
 
     if (!$conn) {
         die("Conexão falhou: " . mysqli_connect_error());
     }
 
-    // Consulta SQL para excluir a exposição
-    $query = "DELETE FROM exposicoes WHERE id = $exposicao_id";
+    // Excluir relacionamentos na tabela obras_de_arte_em_exposicoes
+    $query_delete_relacionamentos = "DELETE FROM obras_de_arte_em_exposicoes WHERE exposicao_id = $exposicao_id";
+    mysqli_query($conn, $query_delete_relacionamentos);
 
-    if (mysqli_query($conn, $query)) {
-        // Redireciona de volta à página de exposições após a exclusão
+    $query_delete_exposicao = "DELETE FROM exposicoes WHERE id = $exposicao_id";
+    
+    if (mysqli_query($conn, $query_delete_exposicao)) {
         header("Location: exposicoes.php");
-        exit; // Encerra o script após o redirecionamento
+        exit;
     } else {
         echo "Erro ao excluir exposição: " . mysqli_error($conn);
     }
 
-    // Fecha a conexão
     mysqli_close($conn);
-} else {
-    echo "ID da exposição não fornecido.";
 }
 ?>

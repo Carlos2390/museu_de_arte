@@ -72,10 +72,11 @@ if (isset($_GET['erro'])) {
                     ?>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button type="submit" class="btn btn-success">Cadastrar</button>
+            <a href="obra_exposicao.php?exposicao_id=<?php echo $exposicao_id; ?>" class="btn btn-primary">Voltar à Exposição</a>
         </form>
         <div class="mt-4">
-            <a href="exposicoes.php" class="btn btn-success">Ver Exposições</a>
+            <a href="exposicoes.php" class="btn btn-warning">Ver Exposições</a>
             <a href="index.php" class="btn btn-secondary">Voltar ao Início</a>
         </div>
     </div>
