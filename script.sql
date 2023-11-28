@@ -14,7 +14,6 @@ CREATE TABLE exposicoes (
   titulo VARCHAR(255) NOT NULL,
   data_inicio DATE NOT NULL,
   data_fim DATE NOT NULL,
-  local VARCHAR(255) NOT NULL,
   PRIMARY KEY (id)
 );
 
