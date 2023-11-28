@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_query($conn, $query)) {
         // Redireciona de volta à página de cadastro de obra em exposição após o sucesso
-        header("Location: cadastra_obra_exposicao.php");
+        header("Location: cadastra_obra_exposicao.php?exposicao_id=$exposicao_id");
         exit; // Encerra o script após o redirecionamento
     } else {
         echo "Erro ao cadastrar obra na exposição: " . mysqli_error($conn);

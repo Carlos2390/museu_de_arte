@@ -13,6 +13,12 @@
         }
     </style>
 </head>
+<header class="text-center mt-4">
+    <div class="mt-4">
+        <a href='index.php' class='btn btn-primary'>Início</a>
+        <a href="exposicoes.php" class="btn btn-success">Ver Exposições</a>
+    </div>
+</header>
 <body>
     <div class="container mt-5">
         <?php
@@ -61,14 +67,17 @@
             echo "ID da obra não fornecido.";
         }
         ?>
-        <div class='text-center mt-4'>
-            <div class="mt-4">
-                <a href="exposicoes.php" class="btn btn-success">Ver Exposições</a>
-            </div> <br>
-            <a href='index.php' class='btn btn-primary'>Início</a>
-        </div>
-        <br>
     </div>
+    <div class="text-center mt-4">
+        <div class="mt-4">
+            <form action="delete_obra.php" method="POST">
+                <a href="edit_obra.php?obra_id=<?php echo $obra_id; ?>" class="btn btn-warning">Editar Obra</a>
+                <input type="hidden" name="obra_id" value="<?php echo $obra_id; ?>">
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza de que deseja excluir esta obra?')">Excluir Obra</button>
+            </form>
+        </div>
+    </div>
+    <br>
     <?php include 'partials/_footer.html';?>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

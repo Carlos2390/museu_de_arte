@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="estilos/cards.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+<header class="text-center mt-4">
+    <div class="mt-4">
+        <a href="index.php" class="btn btn-secondary">Início</a> 
+        <a href="exposicoes.php" class="btn btn-success">Ver Exposições</a>
+    </div>
+</header>
 <body>
     <div class="container mt-5">
             <?php
@@ -77,6 +83,11 @@
                                         <p>$descricao</p>
                                     </div>
                                 </a>
+                                <form action='remove_obra_exposicao.php' method='POST'>
+                                    <input type='hidden' name='exposicao_id' value=' $exposicao_id'>
+                                    <input type='hidden' name='obra_id' value='$id'>
+                                    <button type='submit' class='btn-exclusao btn btn-danger' onclick='return confirm('Tem certeza de que deseja remover esta obra da exposição?')'>Remover Obra</button>
+                                </form>
                             </div>";
                     }
                 } else {
@@ -90,14 +101,46 @@
             }
             ?>
         </div>
-        <div class="text-center">
-            <a href="cadastra_obra_exposicao.php?exposicao_id=<?php echo $exposicao_id; ?>" class="btn btn-success mb-3">Cadastrar Obra</a>
+        <div class="text-center mt-4">
+            <a href="cadastra_obra_exposicao.php?exposicao_id=<?php echo $exposicao_id; ?>" class="btn btn-success">Cadastrar Obra</a>
+            <button type='button' class='btn btn-danger' id='btnDesassociarObras'>Desassociar Obra</button>
+            <div class="mt-4">
+                <form action="delete_exposicao.php" method="POST" onsubmit="return confirm('Tem certeza de que deseja excluir esta exposição?')" class="text-center">
+                    <a href="edit_exposicao.php?exposicao_id=<?php echo $exposicao_id; ?>" class="btn btn-warning">Editar Exposição</a>
+                    <input type="hidden" name="exposicao_id" value="<?php echo $exposicao_id; ?>">
+                    <button type="submit" class="btn btn-danger">Excluir Exposição</button>
+                </form>
+            </div>
         </div>
-        <div class="mt-4">
-            <a href="exposicoes.php" class="btn btn-success">Ver Exposições</a>
-            <a href="index.php" class="btn btn-secondary">Início</a> 
-        </div>
+        <br>
+        
     </div>
+    
+    <!-- Adicione este script no final do seu arquivo HTML -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Inicializa uma variável de controle
+            var exclusaoVisivel = false;
+
+            // Esconde os botões de exclusão inicialmente
+            var botoesExclusao = document.querySelectorAll('.btn-exclusao');
+            botoesExclusao.forEach(function (botao) {
+                botao.style.display = 'none';
+            });
+
+            // Adiciona um ouvinte de evento ao botão "Desassociar Obras"
+            document.getElementById('btnDesassociarObras').addEventListener('click', function () {
+                // Alterna a visibilidade dos botões de exclusão
+                exclusaoVisivel = !exclusaoVisivel;
+
+                // Exibe ou oculta os botões de exclusão com base na variável de controle
+                botoesExclusao.forEach(function (botao) {
+                    botao.style.display = exclusaoVisivel ? 'inline-block' : 'none';
+                });
+            });
+        });
+    </script>
+
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>

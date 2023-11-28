@@ -22,13 +22,17 @@
                     // Conexão com o banco de dados
                     $conn = mysqli_connect($servername, $username, $password, $database);
 
+                    // ID da exposição obtido via GET
+                    $exposicao_id = isset($_GET['exposicao_id']) ? $_GET['exposicao_id'] : null;
+
                     // Consulta SQL para obter as exposições do banco de dados
                     $query = "SELECT id, titulo FROM exposicoes";
                     $result = mysqli_query($conn, $query);
 
                     // Preenche as opções com os resultados da consulta
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<option value='" . $row['id'] . "'>" . $row['titulo'] . "</option>";
+                        $selected = ($row['id'] == $exposicao_id) ? 'selected' : '';
+                        echo "<option value='" . $row['id'] . "' $selected>" . $row['titulo'] . "</option>";
                     }
 
                     // Fecha a conexão
@@ -62,9 +66,6 @@
             <a href="index.php" class="btn btn-secondary">Voltar ao Início</a>
         </div>
     </div>
-    <?php
-    
-    ?>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
