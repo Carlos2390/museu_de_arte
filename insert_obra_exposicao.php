@@ -17,6 +17,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Conexão falhou: " . mysqli_connect_error());
     }
 
+    // Verifica se a obra já está associada a essa exposição
+    $verifica_query = "SELECT * FROM obras_de_arte_em_exposicoes WHERE obra_de_arte_id = '$obra_arte_id' AND exposicao_id = '$exposicao_id'";
+    $verifica_result = mysqli_query($conn, $verifica_query);
+
+    if (mysqli_num_rows($verifica_result) > 0) {
+        // A obra já está associada a essa exposição, redireciona de volta à página da exposição
+        header("Location: cadastra_obra_exposicao.php?exposicao_id=$exposicao_id&erro=obra_associada");
+        exit;
+    }
+    
     // Consulta SQL para inserir os dados na tabela obras_de_arte_em_exposicoes
     $query = "INSERT INTO obras_de_arte_em_exposicoes (obra_de_arte_id, exposicao_id) VALUES ('$obra_arte_id', '$exposicao_id')";
 

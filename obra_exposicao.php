@@ -27,12 +27,16 @@
                 $conn = mysqli_connect($servername, $username, $password, $database);
 
                 if ($conn) {
-                    $query = "SELECT titulo FROM exposicoes WHERE id = $exposicao_id";
+                    $query = "SELECT * FROM exposicoes WHERE id = $exposicao_id";
                     $result = mysqli_query($conn, $query);
-
+                    
                     if (mysqli_num_rows($result) > 0) {
                         $row = mysqli_fetch_assoc($result);
-                        echo "<h1 class='text-center'>" . $row["titulo"] . "</h1>";
+                        $titulo = $row["titulo"];
+                        $data_inicio = date("d/m/Y", strtotime($row["data_inicio"]));
+                        $data_fim = date("d/m/Y", strtotime($row["data_fim"]));
+                        echo "<h1 class='text-center'>" .$titulo ."</h1>";
+                        echo "<h6 class='text-center'>". $data_inicio ." - ". $data_fim . "</h6>";
                     }
                 }
             }
@@ -102,7 +106,7 @@
             ?>
         </div>
         <div class="text-center mt-4">
-            <a href="cadastra_obra_exposicao.php?exposicao_id=<?php echo $exposicao_id; ?>" class="btn btn-success">Cadastrar Obra</a>
+            <a href="cadastra_obra_exposicao.php?exposicao_id=<?php echo $exposicao_id; ?>" class="btn btn-success">Associar Obra</a>
             <button type='button' class='btn btn-danger' id='btnDesassociarObras'>Desassociar Obra</button>
             <div class="mt-4">
                 <form action="delete_exposicao.php" method="POST" onsubmit="return confirm('Tem certeza de que deseja excluir esta exposição?')" class="text-center">

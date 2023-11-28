@@ -1,3 +1,16 @@
+<?php
+// Verifica se há um parâmetro de erro na URL
+if (isset($_GET['erro'])) {
+    $erro = $_GET['erro'];
+
+    // Exibe a mensagem correspondente ao erro
+    if ($erro === 'obra_associada') {
+        echo '<div class="alert alert-danger" role="alert">
+                Esta obra já está associada a esta exposição.
+              </div>';
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

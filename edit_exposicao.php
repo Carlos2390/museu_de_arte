@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["exposicao_id"])) {
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Editar Obra de Arte</h1>
+        <h1 class="text-center">Editar Dados Exposição</h1>
         <form action="update_exposicao.php" method="POST">
             <input type="hidden" name="exposicao_id" value="<?php echo $exposicao_id; ?>">
             <div class="form-group">
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["exposicao_id"])) {
                 <input type="date" class="form-control" name="data_fim" id="data_fim" value="<?php echo $data_fim; ?>">
             </div>
             <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-            <a href="obra_detalhe.php?exposicao_id=<?php echo $exposicao_id; ?>" class="btn btn-secondary">Cancelar</a>
+            <a href="obra_exposicao.php?exposicao_id=<?php echo $exposicao_id; ?>" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

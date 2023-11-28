@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_query($conn, $query)) {
         // Redireciona de volta à página de exposições após a atualização
-        header("Location: exposicoes.php");
+        header("Location: obra_exposicao.php?exposicao_id=$exposicao_id");
         exit; // Encerra o script após o redirecionamento
     } else {
         echo "Erro ao atualizar exposição: " . mysqli_error($conn);
