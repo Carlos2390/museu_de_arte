@@ -21,9 +21,8 @@
             $termo_pesquisa = $_POST["pesquisa"];
 
             // Consulta SQL para buscar obras pelo nome
-            // $sql = "SELECT * FROM obras_de_arte WHERE titulo LIKE '%$nome_obra%'";
-            $sql = "SELECT * FROM obras_de_arte WHERE titulo LIKE '%$termo_pesquisa%' OR artista LIKE '%$termo_pesquisa%' OR material LIKE '%$termo_pesquisa%'";
-            $result = mysqli_query($conn, $sql);
+            $query = "SELECT * FROM obras_de_arte WHERE titulo LIKE '%$termo_pesquisa%' OR artista LIKE '%$termo_pesquisa%' OR material LIKE '%$termo_pesquisa%'";
+            $result = mysqli_query($conn, $query);
 
             // Verificar se há registros
             if (mysqli_num_rows($result) > 0) {

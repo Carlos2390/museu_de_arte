@@ -32,8 +32,8 @@
         }
 
         // Consulta SQL para selecionar todas as exposições
-        $sql = "SELECT * FROM exposicoes";
-        $result = mysqli_query($conn, $sql);
+        $query = "SELECT * FROM exposicoes";
+        $result = mysqli_query($conn, $query);
 
         // Verificar se há exposições
         if (mysqli_num_rows($result) > 0) {

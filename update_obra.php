@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Consulta SQL para atualizar os dados na tabela obras_de_arte
-    $sql = "UPDATE obras_de_arte SET 
+    $query = "UPDATE obras_de_arte SET 
             titulo = '$titulo',
             artista = '$artista',
             data_criacao = '$data_criacao',
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             url_image = '$url_image'
             WHERE id = $obra_id";
 
-    if (mysqli_query($conn, $sql)) {
+    if (mysqli_query($conn, $query)) {
         // Redireciona de volta à página de detalhes da obra após a atualização
         header("Location: obra_detalhe.php?obra_id=$obra_id");
         exit; // Encerra o script após o redirecionamento

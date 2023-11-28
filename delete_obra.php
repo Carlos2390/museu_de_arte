@@ -14,11 +14,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!$conn) {
         die("Conexão falhou: " . mysqli_connect_error());
     }
+    // Remover associações
+    $queryRemoveAssociacao = "DELETE FROM obras_de_arte_em_exposicoes WHERE obra_de_arte_id = $obra_id";
+    mysqli_query($conn, $queryRemoveAssociacao);
 
     // Consulta SQL para excluir a obra da tabela
-    $sql = "DELETE FROM obras_de_arte WHERE id = $obra_id";
+    $query = "DELETE FROM obras_de_arte WHERE id = $obra_id";
 
-    if (mysqli_query($conn, $sql)) {
+    if (mysqli_query($conn, $query)) {
         // Redireciona de volta à página inicial após a exclusão
         header("Location: index.php");
         exit; // Encerra o script após o redirecionamento

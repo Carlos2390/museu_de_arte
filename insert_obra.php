@@ -22,9 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Consulta SQL para inserir os dados na tabela obras_de_arte_em_exposicoes
-    $sql = "INSERT INTO obras_de_arte (titulo, artista, data_criacao, material, dimensoes, url_image) VALUES ('{$titulo}', '{$artista}', '{$data_criacao}', '{$material}', '{$dimensao}', '{$url_image}')";
+    $query = "INSERT INTO obras_de_arte (titulo, artista, data_criacao, material, dimensoes, url_image) VALUES ('{$titulo}', '{$artista}', '{$data_criacao}', '{$material}', '{$dimensao}', '{$url_image}')";
 
-    if (mysqli_query($conn, $sql)) {
+    if (mysqli_query($conn, $query)) {
         // Redireciona de volta à página de cadastro de obra em exposição após o sucesso
         header("Location: index.php");
         exit; // Encerra o script após o redirecionamento

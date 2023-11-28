@@ -14,12 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Excluir relacionamentos na tabela obras_de_arte_em_exposicoes
-    $query_delete_relacionamentos = "DELETE FROM obras_de_arte_em_exposicoes WHERE exposicao_id = $exposicao_id";
-    mysqli_query($conn, $query_delete_relacionamentos);
+    $queryDeleteRelacionamentos = "DELETE FROM obras_de_arte_em_exposicoes WHERE exposicao_id = $exposicao_id";
+    mysqli_query($conn, $queryDeleteRelacionamentos);
 
-    $query_delete_exposicao = "DELETE FROM exposicoes WHERE id = $exposicao_id";
+    $queryDeleteExposicao = "DELETE FROM exposicoes WHERE id = $exposicao_id";
     
-    if (mysqli_query($conn, $query_delete_exposicao)) {
+    if (mysqli_query($conn, $queryDeleteExposicao)) {
         header("Location: exposicoes.php");
         exit;
     } else {

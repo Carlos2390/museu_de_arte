@@ -17,8 +17,8 @@
             }
 
             // Consulta SQL para selecionar todos os registros da tabela
-            $sql = "SELECT * FROM obras_de_arte";
-            $result = mysqli_query($conn, $sql);
+            $query = "SELECT * FROM obras_de_arte";
+            $result = mysqli_query($conn, $query);
 
             // Verificar se há registros
             if (mysqli_num_rows($result) > 0) {
