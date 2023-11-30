@@ -12,7 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $novo_titulo = $_POST["titulo"];
     $nova_data_inicio = $_POST["data_inicio"];
     $nova_data_fim = $_POST["data_fim"];
-    $novo_local = $_POST["local"];
     
     // Adicione outros campos conforme necessário
 
@@ -27,8 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $query = "UPDATE exposicoes SET 
                 titulo = '$novo_titulo', 
                 data_inicio = '$nova_data_inicio', 
-                data_fim = '$nova_data_fim', 
-                local = '$novo_local'
+                data_fim = '$nova_data_fim'
                 WHERE id = $exposicao_id";
 
     // Adicione outros campos conforme necessário

@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_query($conn, $query)) {
         // Redireciona de volta à página inicial após a exclusão
         header("Location: index.php");
-        exit; // Encerra o script após o redirecionamento
+        exit;
     } else {
         echo "Erro ao excluir a obra: " . mysqli_error($conn);
     }
